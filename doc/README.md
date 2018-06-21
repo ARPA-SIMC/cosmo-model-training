@@ -1,0 +1,6 @@
+1. [Components of the COSMO software and external prerequisites](components.md)
+2. [Building prerequisites](building_prerequisites.md)
+3. [Building COSMO code](building_cosmo_code.md)
+4. [Main ingredients for running the COSMO model](main_ingredients.md)
+5. [Input constant data](input_constant_data.md)
+6. [Input model initial and boundary conditions](input_ic_bc.md)
