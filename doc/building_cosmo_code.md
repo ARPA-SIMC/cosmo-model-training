@@ -109,6 +109,6 @@ generating synthetic satellite images, it requires a software library
 licensed by [Eumetsat](http://www.eumetsat.int). For simplicity we
 will ignore (disable) this part at the moment.
 
-[next](main_ingredients.md)
+[next](cosmo_data_formats.md)
 
 [up](README.md)

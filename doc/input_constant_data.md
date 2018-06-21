@@ -1,5 +1,10 @@
 ## Input constant data ##
 
+Input constant data includes at least height of orography and fraction
+of land associated to the input model data, on the same
+grid. Optionally the soil type field may be provided as well as other
+information depending on the input model.
+
 ### ICON ###
 
 The ICON model has data defined on a nontrivial triangular grid on a
