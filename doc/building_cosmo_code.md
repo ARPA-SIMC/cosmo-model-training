@@ -15,7 +15,7 @@ GRIBDIR      = $(HOME)/maldives/install
 #
 F90          = mpif90 -cpp -c -ffree-line-length-none \
                -ffpe-trap=invalid,zero,overflow -fbacktrace -fdump-core \
-               -I/usr/lib64/gfortran/modules -I$(GRIBDIR)/include \
+               -I$(GRIBDIR)/include -I/usr/lib64/gfortran/modules \
                -DGRIBAPI -DNETCDF
 # linker
 LDPAR        = mpif90 -g
@@ -36,7 +36,7 @@ After we type `make` and the end we should obtain the executable
 `tstint2lm`.
 
 Explanation of some necessary compiler switches (in case you use a
-compiler other than gfortran or a different version of gfortran thay
+compiler other than gfortran or a different version of gfortran they
 may need to be translated):
 
  * `-cpp` enable preprocessing of `.f90` sources with the C
@@ -52,7 +52,7 @@ may need to be translated):
    these two libraries
  * `-DGRIBDWD` *do not use* although it is in the example Fopts file,
    since it enables I/O with the old DWD grib library which has been
-   replaced by grib_api
+   replaced by grib_api.
 
 Other switches are for debugging/optimization so they are not strictly
 necessary for a successful compilation and run, but they are required
@@ -69,7 +69,7 @@ GRIBDIR      = $(HOME)/maldives/install
 #
 F90          = mpif90 -cpp -c -ffree-line-length-0 -fstack-protector-all \
                -ffpe-trap=invalid,zero,overflow -fbacktrace -fdump-core \
-               -I/usr/include -I/usr/lib64/gfortran/modules -I$(GRIBDIR)/include \
+               -I/usr/include -I$(GRIBDIR)/include -I/usr/lib64/gfortran/modules \
                -D__COSMO__ -DGRIBAPI -DNETCDF -DNUDGING -DALLOC_WKARR
 # linker
 LDPAR        = mpif90 -g
@@ -103,6 +103,10 @@ The same switches seen for int2lm apply here too, plus some more ones:
  * `-DALLOC_WKARR` new switch allowing static allocation of work
    arrays, optional, it may generate faster code but requiring more
    RAM
+ * `-DSINGLEPRECISION` compile (most of) the model code using floating
+   point single precision arithmetics instead of double, the code will
+   run faster and use less memory, but the results may be less
+   accurate, especially at higher resolution.
 
 All the switches related to "RTTOV" concern a part of code for
 generating synthetic satellite images, it requires a software library

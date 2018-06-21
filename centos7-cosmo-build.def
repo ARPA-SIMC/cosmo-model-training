@@ -14,7 +14,9 @@ Include: yum
 
 # better way? module shell function not available
 %runscript
-    . /etc/profile.d/modules.sh; module load mpi/openmpi-x86_64; exec "$@"
+    . /etc/profile.d/modules.sh
+    module load mpi/openmpi-x86_64
+    exec "$@"
 
 %post
     yum install -q -y epel-release
