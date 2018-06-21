@@ -1,0 +1,25 @@
+# Container definition file for setting up an environment with the
+# main tools required for building and running the COSMO model,
+# including MPI parallel computing infrastructure
+
+BootStrap: yum
+OSVersion: 7
+MirrorURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/os/$basearch/
+Include: yum
+
+# If you want the updates (available at the bootstrap date) to be installed
+# inside the container during the bootstrap instead of the General Availability
+# point release (7.x) then uncomment the following line
+#UpdateURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/updates/$basearch/
+
+# better way? module shell function not available
+%runscript
+    . /etc/profile.d/modules.sh; module load mpi/openmpi-x86_64; exec "$@"
+
+%post
+    yum install -q -y epel-release
+# build with smnd tools and libraries
+# install build tools
+    yum install -q -y gcc gcc-c++ gcc-gfortran wget make patch autoconf automake libtool git
+# install cosmo packages build dependencies
+    yum install -q -y libpng-devel openjpeg-devel libquadmath-devel netcdf netcdf-devel netcdf-cxx-devel netcdf-fortran-devel openmpi openmpi-devel
