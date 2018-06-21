@@ -1,3 +1,5 @@
+# Building and running COSMO code #
+
 1. [Components of the COSMO software and external prerequisites](components.md)
 2. [Building prerequisites](building_prerequisites.md)
 3. [Building COSMO code](building_cosmo_code.md)

@@ -3,6 +3,11 @@
 start=components.md
 n=1
 
+exec 1>README.md
+
+echo "# Building and running COSMO code #"
+echo
+
 while true; do
 
     title=`sed -n -e '1{ s/^## \(.*\) ##$/\1/p}' $start`
@@ -15,4 +20,4 @@ while true; do
     start=$next
     n=$(($n+1))
 
-done > README.md
+done
