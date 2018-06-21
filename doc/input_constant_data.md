@@ -1,8 +1,5 @@
 ## Input constant data ##
 
-In our operational case they will be derived from the ICON global
-model of DWD. This is the suggested approach for mosto COSMO users.
-
 ### ICON ###
 
 The ICON model has data defined on a nontrivial triangular grid on a
@@ -13,7 +10,6 @@ The external constant data consist of 3 files: grid file (`icon_grid`,
 netcdf), external parameter file (`icon_extpar`, netcdf) and file with
 definitions of vertical levels (`icon_hhl`, grib2), these are the
 corresponding namelist entries for int2lm in `INPUT` file:
-
 
 ```
  &GRID_IN
@@ -55,6 +51,21 @@ with external parameters in grib format is needed:
 ```
 
 ### COSMO ###
+
+When nesting COSMO in itself, the direct output of COSMO constant
+parameters on the coarse grid, output by default in the file
+`lfff00000000c`, can be used as input to int2lm as input model
+constant data
+
+```
+ &DATA
+...
+  yinext_lfn='lfff00000000c',
+  yinext_cat='/path/to/coarse/run/files',
+  yinext_form_read='apix',
+...
+ /END
+```
 
 [next](input_ic_bc.md)
 
