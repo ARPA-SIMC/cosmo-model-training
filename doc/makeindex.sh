@@ -5,8 +5,7 @@ n=1
 
 exec 1>README.md
 
-echo "# Building and running COSMO code #"
-echo
+cat README-pre.md
 
 while true; do
 
@@ -19,5 +18,6 @@ while true; do
     
     start=$next
     n=$(($n+1))
-
 done
+
+cat README-post.md

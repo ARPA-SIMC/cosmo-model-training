@@ -34,9 +34,6 @@ the standard WMO BUFR format to netcdf with a specific program
 [bufr2netcdf](https://github.com/ARPA-SIMC/bufr2netcdf) which will be
 introduced in another part of the course.
 
-[WMO
-table](http://www.wmo.int/pages/prog/www/WMOCodes/WMO306_vI2/LatestVERSION/WMO306_vI2_CommonTable_en.pdf)
-
 [next](main_ingredients.md)
 
 [up](README.md)
