@@ -1,5 +1,16 @@
 ## Building prerequisites ##
 
+### Building environment ###
+
+The building environment required for COSMO model includes a minimum
+of packages in addition to a typical basic operating system
+environment, for example on CentOS/Fedora:
+
+```
+sudo yum install epel-release
+sudo yum install gcc gcc-c++ gcc-gfortran wget make patch autoconf automake libtool
+```
+
 ### MPI and netcdf ###
 
 The suggested method for installing MPI and netcdf libraries is
@@ -66,7 +77,7 @@ at the moment `grib_api-1.20.0-Source.tar.gz`:
 tar -xvf grib_api-1.20.0-Source.tar.gz
 cd grib_api-1.20.0-Source
 ./configure --prefix=$HOME/maldives/install --enable-pthread \
- --enable-align-memory --enable-vector -enable-static enable_shared=no
+ --enable-align-memory --enable-vector --enable-static --disable-shared
 make
 ...
 make install

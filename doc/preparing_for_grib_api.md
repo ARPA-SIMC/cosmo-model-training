@@ -1,7 +1,15 @@
 ## Preparing the environment for grib_api ##
 
-The implementation of grib_api in COSMO requires the use of specific
-definition files that provide grib_api with additional information, in
+Grib_api software makes use of so-called definition files for
+describing the possible structure of a binary grib file. In a normal
+grib_api implementation, the definition files are installed together
+with the software; grib_api commands and library look for these
+definitions in the installation directory
+(e.g. `/usr/share/grib_api/definitions`).
+
+The implementation of grib_api in COSMO requires the substitution of
+the standard definition files with a set of customised definition
+files that provide grib_api with additional information, in
 particular, besides allowing some non standard use of grib format
 within COSMO, their main purpose is to associate the names of physical
 variables used in COSMO model (e.g. `T`, `T_2M` etc.) to entries in
@@ -39,6 +47,10 @@ predefined centres.
 After running the procedure, the directory definitions.124/ has to be
 used instead of definitions.edzw/ which would be used if we set
 centre=78 (DWD or edzw).
+
+In order to use the cutomised definition files instead of the original
+ones the environmental variable `GRIB_DEFINITION_PATH` has to be
+exported.
 
 The environment variables to be exported in this case would then be:
 
