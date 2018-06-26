@@ -1,7 +1,7 @@
 ## Main ingredients for running the COSMO model ##
 
-Once all the software is ready, we need the data for running the model
-system:
+Once all the software is ready, we need at least the input gridded
+data for running the model system:
 
  * input model constant external parameters
  * input model data to be used as boundary and (possibly) initial
