@@ -11,6 +11,7 @@
 9. [Preparing the environment for grib_api](preparing_for_grib_api.md)
 10. [Running Int2lm](running_int2lm.md)
 11. [Running Cosmo](running_cosmo.md)
+12. [Importing Cosmo data in grads](cosmo_in_grads.md)
 
 # Other information sources #
 
