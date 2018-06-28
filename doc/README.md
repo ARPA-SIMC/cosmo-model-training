@@ -12,6 +12,7 @@
 10. [Running Int2lm](running_int2lm.md)
 11. [Running Cosmo](running_cosmo.md)
 12. [Importing Cosmo data in grads](cosmo_in_grads.md)
+13. [Installing Arpae software](installing_arpae_software.md)
 
 # Other information sources #
 
