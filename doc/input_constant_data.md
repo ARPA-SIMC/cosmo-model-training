@@ -1,15 +1,16 @@
 ## Input constant data ##
 
 Input constant data includes at least height of orography and fraction
-of land associated to the input model data, on the same
-grid. Optionally the soil type field may be provided as well as other
-information depending on the input model.
+of land associated to the input model data, on the same input
+grid. Optionally, also the soil type field may be provided, as well as
+other information, depending on the input model.
 
 ### ICON ###
 
-The ICON model has data defined on a nontrivial triangular grid on a
-icosahedral pseudo-sphere, so several external files are needed for
-it.
+For an operational Cosmo setup it is suggested to use ICON model
+data. The ICON model has data defined on a nontrivial triangular grid
+on a icosahedral pseudo-sphere, so several external files are needed
+for it.
 
 The external constant data consist of 3 files: grid file (`icon_grid`,
 netcdf), external parameter file (`icon_extpar`, netcdf) and file with
@@ -39,11 +40,11 @@ from time to time.
 
 ### IFS/ERA ###
 
-Conversely, in our case-study setup we will use data from ECMWF
-reanalysis (ERA), in this case the data are retrieved from ECMWF
-archive interpolated on a simple lat/lon grid, so only one single file
-with external parameters in grib format is needed:
-
+Conversely, in a case-study setup it is confortable to use data from
+ECMWF reanalysis (ERA), which is publicly distributed, in this case
+the data are retrieved from ECMWF archive interpolated on a simple
+lat/lon grid, so only one single file with external parameters in grib
+format is needed:
 
 ```
  &DATA

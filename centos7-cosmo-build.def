@@ -20,8 +20,7 @@ Include: yum
 
 %post
     yum install -q -y epel-release
-# build with smnd tools and libraries
 # install build tools
     yum install -q -y gcc gcc-c++ gcc-gfortran wget make patch autoconf automake libtool git
 # install cosmo packages build dependencies
-    yum install -q -y libpng-devel openjpeg-devel libquadmath-devel netcdf netcdf-devel netcdf-cxx-devel netcdf-fortran-devel openmpi openmpi-devel
+    yum install -q -y netcdf netcdf-devel netcdf-fortran-devel openmpi openmpi-devel libpng-devel openjpeg-devel libquadmath-devel
