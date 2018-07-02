@@ -11,8 +11,9 @@
 9. [Preparing the environment for grib_api](preparing_for_grib_api.md)
 10. [Running Int2lm](running_int2lm.md)
 11. [Running Cosmo](running_cosmo.md)
-12. [Importing Cosmo data in grads](cosmo_in_grads.md)
-13. [Installing Arpae software](installing_arpae_software.md)
+12. [Installing grads](installing_grads.md)
+13. [Installing postprocessing software](installing_postprocessing_software.md)
+14. [Importing Cosmo data in grads](cosmo_in_grads.md)
 
 # Other information sources #
 

@@ -19,6 +19,6 @@ vertical level:
  * `lfffDDHH0000z` upper air data vertically interpolated on the
    desired constant height levels
 
-[next](cosmo_in_grads.md)
+[next](installing_grads.md)
 
 [up](README.md)
