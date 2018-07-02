@@ -24,15 +24,6 @@ Example on CentOS/Fedora:
 ```
 sudo yum install netcdf netcdf-devel netcdf-fortran-devel \
  openmpi openmpi-devel
-
-```
-
-on Debian/Ubuntu system this may look like
-
-```
-sudo apt-get install netcdf netcdf-dev netcdf-fortran-dev \
- openmpi openmpi-dev
-
 ```
 
 In the following part we assume that the MPI implementation installed

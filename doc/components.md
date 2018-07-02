@@ -35,6 +35,21 @@ implementation is strongly suggested.
 The COSMO model can also take advantage of GPU accelerators with a
 specific version of the code, but this will not be covered here.
 
+### Operating system ###
+
+The system installation commands throughout this tutorial assume that
+the work is done on a CentOS 7 GNU/Linux system.
+
+It is possible to build a basic CentOS 7 system in a containerized
+environment as remarked in [README](../README.md) and work from within
+the container.
+
+It is also possible to follow the tutorial on a Debian GNU/Linux
+system, in that case all the installation commands (`yum install...`)
+should be skipped, and they should be replaced by the commands
+summarised in the [Debian container definition
+file](../debian-cosmo-build-run-process.def).
+
 [next](building_prerequisites.md)
 
 [up](README.md)

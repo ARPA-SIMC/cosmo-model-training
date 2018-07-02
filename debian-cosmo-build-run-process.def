@@ -1,0 +1,37 @@
+BootStrap: debootstrap
+OSVersion: stable
+MirrorURL: http://ftp.us.debian.org/debian/
+
+%runscript
+    exec "$@"
+
+%post
+    echo "Hello from inside the container"
+    apt-get update
+
+# install build tools
+    apt-get -y install gcc g++ gfortran wget make patch autoconf automake libtool git
+# install cosmo packages build dependencies
+    apt-get -y install libnetcdf-dev libnetcdf11 libnetcdff-dev libnetcdff6 openmpi-bin libopenmpi-dev libopenmpi2 libopenjp2-7 libopenjp2-7-dev libpng16-16 libpng-dev
+# install eccodes (replaces grib_api)
+    apt-get -y install libeccodes0 libeccodes-tools libeccodes-dev
+# install grads-related tools (wgrib2 missing!)
+    apt-get -y install grads perl
+# install tools from NOAA (not included elsewhere due to unclear license)
+    wget -O /usr/local/bin/grib2ctl.pl ftp://ftp.cpc.ncep.noaa.gov/wd51we/wgrib.scripts/grib2ctl.pl
+    wget -O /usr/local/bin/g2ctl ftp://ftp.cpc.ncep.noaa.gov/wd51we/g2ctl/g2ctl
+    chmod +x /usr/local/bin/grib2ctl.pl /usr/local/bin/g2ctl
+
+    apt-get clean
+
+# install smnd binary package
+smndtag=2.4
+cd /usr/local
+wget https://github.com/ARPA-SIMC/smnd/releases/download/v${smndtag}/smnd-${smndtag}_unibin.tar.gz
+tar -xvf smnd-${smndtag}_unibin.tar.gz
+cd smnd-${smndtag}
+./install_from_bin.sh
+mv ~/smnd_profile /usr/local/etc
+cd ..
+rm -f smnd-${smndtag}_unibin.tar.gz
+
