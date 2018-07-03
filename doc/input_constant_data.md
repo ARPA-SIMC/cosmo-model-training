@@ -12,6 +12,8 @@ data. The ICON model has data defined on a nontrivial triangular grid
 on a icosahedral pseudo-sphere, so several external files are needed
 for it.
 
+![ICON grid](icon_1_.png) (courtesy of LMU München).
+
 The external constant data consist of 3 files: grid file (`icon_grid`,
 netcdf), external parameter file (`icon_extpar`, netcdf) and file with
 definitions of vertical levels (`icon_hhl`, grib2), these are the
