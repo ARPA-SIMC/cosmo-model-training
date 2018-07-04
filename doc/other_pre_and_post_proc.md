@@ -125,12 +125,58 @@ where `$BUFR_TEMPLATE` is a suitable template for the observation
 type, see `dbamsg convert --template=list` for a complete list of
 available templates.
 
+### Converting generic observations into GRIB ###
+
+For latent heat nudging in Cosmo, the observations (typically radar
+rain rate estimation) have to be provided in the form of gridded
+fields in grib format.
+
+Following a procedure similar to the one seen in the previous section,
+we can write our rain rate observations in a format similar to the
+following:
+
+```
+Longitude,Latitude,Report,Date,Level1,L1,Level2,L2,Time range,P1,P2,Varcode,Value
+12.052,44.027,,2013-03-15 06:00:00,1,,,,254,0,0,B13011,0.2
+13.040,44.310,,2013-03-15 06:00:00,1,,,,254,0,0,B13011,0.4
+13.510,44.330,,2013-03-15 06:00:00,1,,,,254,0,0,B13011,0.0
+12.052,44.027,,2013-03-15 06:30:00,1,,,,254,0,0,B13011,0.5
+13.040,44.310,,2013-03-15 06:30:00,1,,,,254,0,0,B13011,1.8
+13.510,44.330,,2013-03-15 06:30:00,1,,,,254,0,0,B13011,2.0
+```
+
+for every point where an observation is available in space and time,
+taking care to specify an instantaneous time range and to code the
+value in units of Kg/m^2/h (mm/h) regardless of the standard unit for
+variable `B13011`.
+
+After that, the csv file should be converted to BUFR and then gridded
+on the same grid used for the model run. For gridding we need a model
+grib file to be used as template for describing the grid (named
+`model_grid_template.grib` in the example). The commands are thus the
+following:
+
+```
+# convert to BUFR
+dbamsg convert -t csv -d bufr --template=generic \
+ obs.csv > obs.bufr
+# grid to a GRIB file using libsim tool v7d_transform
+v7d_transform --post-trans-type=boxinter:average \
+ --input-format=BUFR --output-format=grib_api:model_grid_template.grib \
+ obs.bufr obs.grib
+```
+
+The output file `obs.grib` will have to be renamed to the form
+`yymmddhh.grib1`, according to Cosmo convention, before feeding it to
+the Cosmo model.
+
 ### Converting BUFR observations into netcdf for data assimilation ###
 
-Cosmo model requires observations for data assimilation to be
-formatted in a particular netcdf format. Conversion from standard BUFR
-to this netcdf format can be performed with the `bufr2netcdf` command
-included in the Arpae packages.
+Cosmo model requires observations for data assimilation (excluded
+latent heat nudging) to be formatted in a particular netcdf
+format. Conversion from standard BUFR to this netcdf format can be
+performed with the `bufr2netcdf` command included in the Arpae
+packages.
 
 ```
 bufr2netcdf -o obs input.bufr
