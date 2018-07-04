@@ -17,21 +17,29 @@ MirrorURL: http://ftp.us.debian.org/debian/
     apt-get -y install libeccodes0 libeccodes-tools libeccodes-dev
 # install grads-related tools (wgrib2 missing!)
     apt-get -y install grads perl
+    apt-get clean
+
 # install tools from NOAA (not included elsewhere due to unclear license)
     wget -O /usr/local/bin/grib2ctl.pl ftp://ftp.cpc.ncep.noaa.gov/wd51we/wgrib.scripts/grib2ctl.pl
     wget -O /usr/local/bin/g2ctl ftp://ftp.cpc.ncep.noaa.gov/wd51we/g2ctl/g2ctl
     chmod +x /usr/local/bin/grib2ctl.pl /usr/local/bin/g2ctl
-
-    apt-get clean
+# build wgrib2 from NOAA
+    wget http://www.ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/wgrib2.tgz
+    tar -xvf wgrib2.tgz
+    cd grib2
+    CC=gcc FC=gfortran make
+    cp -p wgrib2/wgrib2 /usr/local/bin
+    cd ..
+    rm -rf grib2 wgrib2.tgz
 
 # install smnd binary package
-smndtag=2.4
-cd /usr/local
-wget https://github.com/ARPA-SIMC/smnd/releases/download/v${smndtag}/smnd-${smndtag}_unibin.tar.gz
-tar -xvf smnd-${smndtag}_unibin.tar.gz
-cd smnd-${smndtag}
-./install_from_bin.sh
-mv ~/smnd_profile /usr/local/etc
-cd ..
-rm -f smnd-${smndtag}_unibin.tar.gz
+    smndtag=2.4
+    cd /usr/local
+    wget https://github.com/ARPA-SIMC/smnd/releases/download/v${smndtag}/smnd-${smndtag}_unibin.tar.gz
+    tar -xvf smnd-${smndtag}_unibin.tar.gz
+    cd smnd-${smndtag}
+    ./install_from_bin.sh
+    mv ~/smnd_profile /usr/local/etc
+    cd ..
+    rm -f smnd-${smndtag}_unibin.tar.gz
 

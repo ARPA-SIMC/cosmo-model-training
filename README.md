@@ -22,7 +22,6 @@ CentOS containerized environment with
 [singularity](http://singularity.lbl.gov/) on a generic Linux system.
 
 There is also a container for generating a Debian system suitable for
-performing most of the tutorial sections (only grib2 in grads is not
-supported at the moment); it can be used either for generating a
-Debian containerized environment or as a hint for installaton of
-prerequisites on a real Debian/Ubuntu system.
+performing the tutorial (not fully tested however); it can be used
+either for generating a Debian containerized environment or as a hint
+for installation of prerequisites on a real Debian/Ubuntu system.
