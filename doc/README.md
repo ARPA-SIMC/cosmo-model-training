@@ -14,6 +14,7 @@
 12. [Installing grads](installing_grads.md)
 13. [Installing postprocessing software](installing_postprocessing_software.md)
 14. [Importing Cosmo data in grads](cosmo_in_grads.md)
+15. [Other useful pre- and post-processing operations](other_pre_and_post_proc.md)
 
 # Other information sources #
 

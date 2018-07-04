@@ -92,4 +92,6 @@ gribmap -i surf2.ctl
 # in grads we will open surf2.ctl
 ```
 
+[next](other_pre_and_post_proc.md)
+
 [up](README.md)
