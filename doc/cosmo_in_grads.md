@@ -26,7 +26,7 @@ gribmap -i lfff00000000p.ctl
 ### Postprocessing data for improving grads experience ###
 
 Now we will use grib_api tools and libsim tools to process the grib
-files before importing themn in grads.
+files before importing them in grads.
 
 #### Isolating surface fields only ####
 
@@ -36,7 +36,8 @@ underground levels, it may be useful to keep only surface data to
 decrease the number of variables seen by grads.
 
 The following script puts all COSMO lfff???????? files together
-removing upper air and deep soil fields:
+removing upper air and deep soil fields (it works both with grib1 and
+grib2):
 
 ```
 #!/bin/sh
@@ -45,7 +46,7 @@ rm -f surf.grib o.tmp
 for file in lfff0???0000; do
 echo $file
 # eliminate upper air and soil fields
-grib_copy -w typeOfLevel!=generalVertical/generalVerticalLayer/depthBelowLandLayer/depthBelowLand $file o.tmp
+grib_copy -w typeOfLevel!=hybrid/hybridLayer/generalVertical/generalVerticalLayer/depthBelowLandLayer/depthBelowLand $file o.tmp
 # put all time ranges together
 cat o.tmp >>surf.grib
 rm -f o.tmp
@@ -67,20 +68,26 @@ accumulation or averages between two output time intervals.
 The following script removes accumulated and average fields from the
 previous file, recomputes them on an hourly interval and puts the
 result back in a single file together with the other surface
-instantaneous fields:
+instantaneous fields (it works both with grib1 and grib2):
 
 ```
 #!/bin/sh
+rm -f surf2.grib
 # isolate instantaneous fields
-grib_copy -w productDefinitionTemplateNumber=0 surf.grib surf2.grib
+grib_copy -w timeRangeIndicator=0/productDefinitionTemplateNumber=0 surf.grib surf2.grib
 # isolate average and accumulated fields
-grib_copy -w typeOfStatisticalProcessing=0/1,productDefinitionTemplateNumber=8 surf.grib surfavgcum.grib
+rm -f surfavgcum.grib*
+touch surfavgcum.grib1 surfavgcum.grib2
+grib_copy -w editionNumber=1,timeRangeIndicator=3/4 surf.grib surfavgcum.grib1
+grib_copy -w editionNumber=2,typeOfStatisticalProcessing=0/1,productDefinitionTemplateNumber=8 surf.grib surfavgcum.grib2
+cat surfavgcum.grib1 surfavgcum.grib2 > surfavgcum.grib
 # recumulate on 1h intervals with libsim
 vg6d_transform --comp-stat-proc=0:0 --comp-step='0 01' surfavgcum.grib avg.grib
 # reaverage on 1h intervals with libsim
 vg6d_transform --comp-stat-proc=1:1 --comp-step='0 01' surfavgcum.grib cum.grib
 # append to instantaneous fields
 cat avg.grib cum.grib >> surf2.grib
+rm -f surfavgcum.grib*
 ```
 [download the script](../tools/cumulate_surf.sh)
 
