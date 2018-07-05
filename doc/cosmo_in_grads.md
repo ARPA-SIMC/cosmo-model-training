@@ -8,7 +8,7 @@ content for grads, and indexing the grib file itself. For grib1 the
 procedure, starting from a grib file named `lfff00000000` is:
 
 ```
-./grib2ctl.pl lfff00000000p>lfff00000000p.ctl
+./grib2ctl.pl -verf lfff00000000p>lfff00000000p.ctl
 gribmap -i lfff00000000p.ctl
 ```
 
@@ -19,7 +19,7 @@ For grib2 it is similar but we have to use a different tool (and have
 `wgrib2` command installed):
 
 ```
-./g2ctl lfff00000000p>lfff00000000p.ctl
+./g2ctl -verf lfff00000000p>lfff00000000p.ctl
 gribmap -i lfff00000000p.ctl
 ```
 
@@ -91,7 +91,15 @@ rm -f surfavgcum.grib*
 ```
 [download the script](../tools/cumulate_surf.sh)
 
-Now `surf2.grib` is suitable for visualisation in grads:
+Now `surf2.grib` is suitable for visualisation in grads, for grib1:
+
+```
+grib2ctl.pl -verf surf2.grib > surf2.ctl
+gribmap -i surf2.ctl
+# in grads we will open surf2.ctl
+```
+
+for grib2:
 
 ```
 g2ctl surf2.grib > surf2.ctl
