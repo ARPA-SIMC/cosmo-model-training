@@ -16,9 +16,9 @@ namelist:
  /END
 ```
 
-the naming scheme is `igfffDDHH0000`, with `DD` equal to the number of
-days of forecast and `HH` number of hours. For 3-hourly data up to 72
-hours it will thus look like:
+the naming scheme for the input data files is `igfffDDHH0000`, with
+`DD` equal to the number of days of forecast and `HH` number of
+hours. For 3-hourly data up to 72 hours it will thus look like:
 
 ```
 igfff00000000
@@ -38,7 +38,13 @@ an hourly frequency.
 
 ### IFS/ERA ###
 
-If the input is ECMWF IFS model or ERA reanalysis we have
+If the input is ECMWF IFS model or ERA reanalysis (ERA-Interim or
+ERA-5), we distinguish the cases of running with forecasts or analysis
+as boundary conditions.
+
+#### Forecast boundary conditions ####
+
+In the int2lm `INPUT` namelist file we have to specify:
 
 ```
  &CONTRL
@@ -48,11 +54,11 @@ If the input is ECMWF IFS model or ERA reanalysis we have
  /END
 ```
 
-and the naming scheme is `efsfDDHH0000`, with `DD` equal to the number
-of days of forecast and `HH` number of hours. An analysis file
-(usually equal to the first boundary file) named with the date and
-time of the analisys `easYYYYMMDDHH`, is also needed. For 3-hourly
-data up to 72 hours it will thus look like:
+and the naming scheme for input grib files is `efsfDDHH0000`, with
+`DD` equal to the number of days of forecast and `HH` number of
+hours. An analysis file (usually equal to the first boundary file)
+named with the date and time of the analysis `easYYYYMMDDHH`, is also
+needed. For 3-hourly data up to 72 hours it will thus look like:
 
 ```
 eas2018062000 -> efsf00000000
@@ -67,9 +73,10 @@ efsf01030000
 efsf03000000
 ```
 
-### COSMO ###
+#### Analysed boundary conditions ####
 
-If the input model is COSMO itself, we set:
+In this case we have to specify a non default value for `yinput_type`
+in the int2lm `INPUT` namelist:
 
 ```
  &CONTRL
@@ -77,10 +84,46 @@ If the input model is COSMO itself, we set:
   yinput_model='IFS',
 ...
  /END
+...
+ &DATA
+...
+  yinput_type='analysis',
+...
+ /END
 ```
 
-and the expected file names are exactly those produced by COSMO model,
-e.g.:
+and the naming scheme for all the files is `easYYYYMMDDHH`. For 3-hourly
+data up to 48 hours, for a specific date, it will thus look like:
+
+```
+eas2017112900
+eas2017112903
+eas2017112906
+eas2017112909
+eas2017112912
+eas2017112915
+eas2017112918
+eas2017112921
+eas2017113000
+eas2017113003
+...
+eas2017120100
+```
+
+### COSMO ###
+
+If the input model is COSMO itself, we set in `INPUT`:
+
+```
+ &CONTRL
+...
+  yinput_model='COSMO',
+...
+ /END
+```
+
+and the expected input file names are exactly those produced by COSMO
+model, e.g.:
 
 ```
 laf2018062000 -> lfff00000000
