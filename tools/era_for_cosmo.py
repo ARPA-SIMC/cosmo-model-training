@@ -2,8 +2,7 @@
 
 import optparse
 import datetime
-import os
-import shutil
+import os, shutil, sys
 import ecmwfapi
 #import ECMWFDataServer
 
@@ -50,32 +49,33 @@ def retrieve_time(now, inputtype, opts, step, outdir):
     if inputtype == "a":
         marsbase["type"] = "an"
         marsbase["target"] = os.path.join(outdir, now.strftime("eas%Y%m%d%H"))
-    else:
+    elif inputtype == "f":
         marsbase["type"] = "fc"
         marsbase["target"] = os.path.join(outdir, "efsf%02d%02d0000" % (step/24,step%24))
         marsbase["step"] = str(step)
+    elif inputtype == "e":
+        marsbase["type"] = "an"
+        marsbase["target"] = os.path.join(outdir, "ec_ext.grib")
 
 # specialized dictionaries
-    marsml = {
-        "levtype": "ml",
-        "levelist": "all",
-        "param": "u/v/w/t/q/clwc/ciwc/crwc/cswc/lnsp"
-    }
-    marspl = {
-        "levtype": "pl",
-        "levelist": "200",
-        "param": "z"
-    }
-    marssl = {
-        "levtype": "sfc",
-        "param": "skt/tsn/sd/src/stl1/stl2/stl3/stl4/swvl1/swvl2/swvl3/swvl4/ci/istl1"
-    }
+# variable
+    marsml = {"levtype": "ml", "levelist": "all",
+              "param": "u/v/w/t/q/clwc/ciwc/crwc/cswc/lnsp"}
+    marspl = {"levtype": "pl", "levelist": "200", "param": "z"}
+    marssfc = {"levtype": "sfc",
+               "param": "skt/tsn/sd/src/stl1/stl2/stl3/stl4/swvl1/swvl2/swvl3/swvl4/ci/istl1"}
+# constant
+    marsextparml = {"levtype": "ml", "levelist": "1", "param": "z"}
+    marsextparsfc = {"levtype": "sfc", "param": "z/lsm/slt"}
 
     print("Starting retrieving %s" % marsbase["target"])
-    retrieve_level(marsbase, marsml, False)
-    retrieve_level(marsbase, marspl, True)
-    retrieve_level(marsbase, marssl, True)
-
+    if inputtype == "a" or inputtype == "f":
+        retrieve_level(marsbase, marsml, False)
+        retrieve_level(marsbase, marspl, True)
+        retrieve_level(marsbase, marssfc, True)
+    else:
+        retrieve_level(marsbase, marsextparml, False)
+        retrieve_level(marsbase, marsextparsfc, True)
 
 parser = optparse.OptionParser(usage="%prog --start-date=YYmmddHH [OPTIONS]",
                                description="""This program downloads data from public ECMWF archives of ERA5 and
@@ -101,21 +101,22 @@ ecmwf-api-client python package and have in your home directory a
 valid license key for access to ECMWF public data.
 """
 )
-parser.add_option("--dataset", help="name of dataset to query, may be one of 'interim' for ERA-Interim or 'era5' for ERA5",
+parser.add_option("--dataset", help="name of dataset to query, may be one of 'interim' for ERA-Interim or 'era5' for ERA5 [default: %default]",
                   default="era5")
-parser.add_option("--input-type", help="type of input data, may be 'a(nalysis)' or 'f(orecast)'",
+parser.add_option("--input-type", help="type of input data, may be 'a(nalysis)' or 'f(orecast)' [default: %default]",
                   default="a")
-parser.add_option("--start-date", help="initial date in format YYYYmmddhh")
-parser.add_option("--end-date", help="final date in format YYYYmmddhh (if input-type=forecast it indicates the final reference time), if not specified it is equal to start-date")
-parser.add_option("--analysis-step", help="step for retrieving successive analyses in hours",
+parser.add_option("--start-date", help="initial time in format YYYYmmddhh")
+parser.add_option("--end-date", help="final time in format YYYYmmddhh, for forecast input type it indicates the initial time of the last forecast retrieved, if not specified it is equal to start-date")
+parser.add_option("--analysis-step", help="step in hours of successive analyses (for analysis input) or of successive forecast initial times (for forecast input) [default: %default]",
                   type="int", default=3)
-parser.add_option("--forecast-step", help="step for retrieving successive forecast steps in hours",
+parser.add_option("--forecast-step", help="step in hours for successive forecast steps (for forecast input type) [default: %default]",
                   type="int", default=3)
-parser.add_option("--forecast-range", help="forecast range in hours",
+parser.add_option("--forecast-range", help="forecast range in hours (for forecast input type) [default: %default]",
                   type="int", default=12)
-parser.add_option("--area", help="geographical bounds of the area to retrieve in the form 'N/W/S/E'",
+parser.add_option("--area", help="geographical bounds of the area to retrieve in the form 'N/W/S/E' [default: %default]",
                   default="13/63/-7/83")
 parser.add_option("--subdir", help="subdirectory where to save output to avoid overwriting forecast files, default empty (current directory) for analysis mode and %Y%m%d%H for forecast mode")
+parser.add_option("--extpardir", help="subdirectory where to save external constant parameters, this is done only once for the first reference time requested; if the argument is not provided, no external parameters are retrieved")
 
 opts, args = parser.parse_args()
 
@@ -133,6 +134,14 @@ dtstart = makedt(opts.start_date)
 if opts.end_date is None: opts.end_date = opts.start_date
 dtend = makedt(opts.end_date)
 dtstep = datetime.timedelta(hours=opts.analysis_step)
+
+if opts.extpardir is not None:
+    if opts.extpardir != "":
+        try:
+            os.makedirs(opts.extpardir)
+        except:
+            pass
+    retrieve_time(dtstart, "e", opts, 0, opts.extpardir)
 
 if opts.input_type.startswith("a"): # analysis mode
     dtnow = dtstart
