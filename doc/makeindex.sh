@@ -5,7 +5,7 @@ n=1
 
 exec 1>README.md
 
-cat README-pre.md
+cat README-pre.nomd
 
 while true; do
 
@@ -20,4 +20,4 @@ while true; do
     n=$(($n+1))
 done
 
-cat README-post.md
+cat README-post.nomd
