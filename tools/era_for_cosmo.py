@@ -82,6 +82,9 @@ parser = optparse.OptionParser(usage="%prog --start-date=YYmmddHH [OPTIONS]",
 ERA-Interim reanalysis projects, either in analysis mode or in
 forecast mode, ready for Cosmo model.
 
+Horizontal grid step is hardcoded to 0.25 deg for ERA5 and 0.5 deg for
+ERA-Interim.
+
 In analysis mode all the analyses between start-date and end-date at
 step analysis-step are retrieved in the current directory, one file
 per analysis time.
