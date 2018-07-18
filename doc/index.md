@@ -1,21 +1,32 @@
 # Building and running COSMO code #
 
-1. [Components of the COSMO software and external prerequisites](components.md)
-2. [Building prerequisites](building_prerequisites.md)
-3. [Building COSMO code](building_cosmo_code.md)
-4. [COSMO data formats](cosmo_data_formats.md)
-5. [Main ingredients for running the COSMO model](main_ingredients.md)
-6. [Input constant data](input_constant_data.md)
-7. [Input model initial and boundary conditions](input_ic_bc.md)
-8. [COSMO constant data](cosmo_constant_data.md)
-9. [Retrieving ECMWF reanalysis](retrieving_ecmwf_reanalysis.md)
-10. [Preparing the environment for grib_api](preparing_for_grib_api.md)
-11. [Running Int2lm](running_int2lm.md)
-12. [Running Cosmo](running_cosmo.md)
-13. [Installing grads](installing_grads.md)
-14. [Installing postprocessing software](installing_postprocessing_software.md)
-15. [Importing Cosmo data in grads](cosmo_in_grads.md)
-16. [Other useful pre- and post-processing operations](other_pre_and_post_proc.md)
+# cosmo-model-training
+
+Training material for starting running COSMO model on Maldives Islands
+and not only
+
+## Quick start
+
+For starting, clone this project in your home directory, change to the
+project directory `cosmo-model-training`, download all the
+[Cosmo](http://www.cosmo.model.org/) software in that directory
+(int2lm, cosmo, grib_api) and you are ready to start with the tutorial
+in [the doc/ directory](doc/README.md).
+
+## Linux distribution
+
+The operating-system-related operations contained in the tutorial
+(mainly installation of pre-compiled software packages) assume the
+user is working under a CentOS 7 GNU/Linux distribution. If such a
+system is not available, it is possible to use one of the `centos*`
+recipe files in the [singularity directory](singularity) to build a
+CentOS containerized environment with
+[singularity](http://singularity.lbl.gov/) on a generic Linux system.
+
+There is also a container for generating a Debian system suitable for
+performing the tutorial (not fully tested however); it can be used
+either for generating a Debian containerized environment or as a hint
+for installation of prerequisites on a real Debian/Ubuntu system.
 
 # Other information sources #
 
