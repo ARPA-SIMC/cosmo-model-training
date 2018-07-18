@@ -8,13 +8,14 @@
 6. [Input constant data](input_constant_data.md)
 7. [Input model initial and boundary conditions](input_ic_bc.md)
 8. [COSMO constant data](cosmo_constant_data.md)
-9. [Preparing the environment for grib_api](preparing_for_grib_api.md)
-10. [Running Int2lm](running_int2lm.md)
-11. [Running Cosmo](running_cosmo.md)
-12. [Installing grads](installing_grads.md)
-13. [Installing postprocessing software](installing_postprocessing_software.md)
-14. [Importing Cosmo data in grads](cosmo_in_grads.md)
-15. [Other useful pre- and post-processing operations](other_pre_and_post_proc.md)
+9. [Retrieving ECMWF reanalysis](retrieving_ecmwf_reanalysis.md)
+10. [Preparing the environment for grib_api](preparing_for_grib_api.md)
+11. [Running Int2lm](running_int2lm.md)
+12. [Running Cosmo](running_cosmo.md)
+13. [Installing grads](installing_grads.md)
+14. [Installing postprocessing software](installing_postprocessing_software.md)
+15. [Importing Cosmo data in grads](cosmo_in_grads.md)
+16. [Other useful pre- and post-processing operations](other_pre_and_post_proc.md)
 
 # Other information sources #
 

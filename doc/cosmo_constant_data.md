@@ -31,12 +31,12 @@ grib format, the corresponding namelist settings will look like:
  /END
 ```
 
-Different sets of external parameters can be asked to DWD, specifying
-the area (which should be bigger than the desired integration doman)
-the grid step and the desired pole of rotation (for tropical areas
-unrotated fields, i.e. with north pole of rotation coinciding with the
-geographical North Pole, is a good choice).
+The necessary set of external parameters can be asked to DWD,
+specifying the area (which should be bigger than the desired
+integration doman) the grid step and the desired pole of rotation (for
+tropical areas unrotated fields, i.e. with north pole of rotation
+coinciding with the geographical North Pole, is a good choice).
 
-[next](preparing_for_grib_api.md)
+[next](retrieving_ecmwf_reanalysis.md)
 
 [up](README.md)

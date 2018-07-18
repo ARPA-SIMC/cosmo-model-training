@@ -48,7 +48,7 @@ It is also possible to follow the tutorial on a Debian GNU/Linux
 system, in that case all the installation commands (`yum install...`)
 should be skipped, and they should be replaced by the commands
 summarised in the [Debian container definition
-file](../debian-cosmo-build-run-process.def).
+file](../singularity/debian-cosmo-build-run-process.def).
 
 [next](building_prerequisites.md)
 
