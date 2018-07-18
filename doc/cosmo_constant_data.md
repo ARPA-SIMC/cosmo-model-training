@@ -1,4 +1,4 @@
-## COSMO constant data ##
+## COSMO constant data
 
 COSMO constant data comprises a much wider set of constant fields than
 constant input model data, ranging from orography, fraction of land

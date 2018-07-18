@@ -1,3 +1,3 @@
-## The latlon rotated grid ##
+## The latlon rotated grid
 
 To be done.

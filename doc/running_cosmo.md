@@ -1,4 +1,4 @@
-## Running Cosmo ##
+## Running Cosmo
 
 Most of the instructions for running int2lm apply also to cosmo,
 e.g. setting the `nprocx` and `nprocy` namelist variables according to

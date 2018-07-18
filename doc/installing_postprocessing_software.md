@@ -1,6 +1,6 @@
-## Installing postprocessing software ##
+## Installing postprocessing software
 
-### Installing grib_api from repository ###
+### Installing grib_api from repository
 
 We have already compiled the grib_api software specifically for Cosmo
 in a [previous section](building_prerequisites.md), however it may be
@@ -25,7 +25,7 @@ a CentOS 7 system, as described in the next paragraph, it is better not
 to install grib_api since it will be replaced by the newer eccodes
 software which includes also grib_api functionalities.
 
-### Installing Arpae software ###
+### Installing Arpae software
 
 Arpae-SIMC develops and distributes various free software packages
 useful for processing numerical weather prediction data, their main

@@ -1,4 +1,4 @@
-## Retrieving ECMWF reanalysis ##
+## Retrieving ECMWF reanalysis
 
 Recent ECEMF reanalysis projects, namely ERA-Interim and ERA5, offer a
 publicly accessible archive of atmospheric reanalysis data with a
@@ -10,7 +10,7 @@ In order to get access to the data, the user must register and install
 the ecmwf-api-client package as indicated in the [corresponding ECMWF
 page](https://confluence.ecmwf.int//display/CKB/How+to+download+data+via+the+ECMWF+WebAPI).
 
-### Use of the provided script for retriving data for Cosmo ###
+### Use of the provided script for retriving data for Cosmo
 
 This project provides a script `era_for_cosmo.py` which can be used to
 perform data retrieval of ERA reanalysis data and produces the files

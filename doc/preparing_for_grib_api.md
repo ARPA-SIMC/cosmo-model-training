@@ -1,6 +1,6 @@
-## Preparing the environment for grib_api ##
+## Preparing the environment for grib_api
 
-### Definition files ###
+### Definition files
 
 Grib_api software makes use of so-called definition files for
 describing the binary structure of a grib file and for associating
@@ -33,7 +33,7 @@ i.e. templates for generating grib files from zero, which are used
 when producing grib in output, these also are to be fed to the COSMO
 software through the variable `GRIB_SAMPLES_PATH`.
 
-### Customisation of definition files for WMO centre ###
+### Customisation of definition files for WMO centre
 
 When these specific definition files are activated within grib_api,
 their effect depends on the "emission centre" i.e. the National
@@ -53,7 +53,7 @@ There is also a similar `link_cosmo_script.git` provided in the int2lm
 code package, but it works only for grib2 and for a number of
 predefined centres.
 
-### Putting it all together ###
+### Putting it all together
 
 In order to prepare the grib_api definition the procedure is the
 following (we will use version 1.20):

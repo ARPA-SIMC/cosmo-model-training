@@ -1,4 +1,4 @@
-## Installing grads ##
+## Installing grads
 
 On Fedora/CentOS system grads and other related tools can be installed
 from the standard repository:

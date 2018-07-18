@@ -1,6 +1,6 @@
-## Building prerequisites ##
+## Building prerequisites
 
-### Building environment ###
+### Building environment
 
 The building environment required for COSMO model includes a minimum
 of packages in addition to a typical basic operating system
@@ -11,7 +11,7 @@ sudo yum install epel-release
 sudo yum install gcc gcc-c++ gcc-gfortran wget make patch autoconf automake libtool
 ```
 
-### MPI and netcdf ###
+### MPI and netcdf
 
 The suggested method for installing MPI and netcdf libraries is
 through the own Linux distribution package management, since these
@@ -49,7 +49,7 @@ are not portable between compilers. The MPI implementation, in some
 cases, may be portable between different Fortran compilers having the
 same C-calling convention.
 
-### Grib_api ###
+### Grib_api
 
 For grib_api, since COSMO requires a specific version which may not be
 available in the distribution, it is suggested to compile it by

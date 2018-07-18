@@ -1,11 +1,11 @@
-## Input constant data ##
+## Input constant data
 
 Input constant data includes at least height of orography and fraction
 of land associated to the input model data, on the same input
 grid. Optionally, also the soil type field may be provided, as well as
 other information, depending on the input model.
 
-### ICON ###
+### ICON
 
 For an operational Cosmo setup it is suggested to use ICON model
 data. The ICON model has data defined on a nontrivial triangular grid
@@ -40,7 +40,7 @@ corresponding namelist entries for int2lm in `INPUT` file:
 These 3 files are provided by DWD on the desired subdomain and updated
 from time to time.
 
-### IFS/ERA ###
+### IFS/ERA
 
 Conversely, in a case-study setup it is confortable to use data from
 ECMWF reanalysis (ERA), which is publicly distributed, in this case
@@ -58,7 +58,7 @@ format is needed:
  /END
 ```
 
-### COSMO ###
+### COSMO
 
 When nesting COSMO in itself, the direct output of COSMO constant
 parameters on the coarse grid, output by default in the file

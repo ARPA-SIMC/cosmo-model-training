@@ -1,9 +1,9 @@
-## Input model initial and boundary conditions ##
+## Input model initial and boundary conditions
 
 Input model data to be used as initial and boundary conditions should
 then be provided with a particular naming scheme depending on the input model.
 
-### ICON ###
+### ICON
 
 If the input model is ICON, as specified in the int2lm `INPUT`
 namelist:
@@ -36,13 +36,13 @@ It is suggested to get boundary data at least every 3 hours, however,
 if you internet connection allows it, ICON can be retrieved also with
 an hourly frequency.
 
-### IFS/ERA ###
+### IFS/ERA
 
 If the input is ECMWF IFS model or ERA reanalysis (ERA-Interim or
 ERA-5), we distinguish the cases of running with forecasts or analysis
 as boundary conditions.
 
-#### Forecast boundary conditions ####
+#### Forecast boundary conditions
 
 In the int2lm `INPUT` namelist file we have to specify:
 
@@ -73,7 +73,7 @@ efsf01030000
 efsf03000000
 ```
 
-#### Analysed boundary conditions ####
+#### Analysed boundary conditions
 
 In this case we have to specify a non default value for `yinput_type`
 in the int2lm `INPUT` namelist:
@@ -110,7 +110,7 @@ eas2017113003
 eas2017120100
 ```
 
-### COSMO ###
+### COSMO
 
 If the input model is COSMO itself, we set in `INPUT`:
 

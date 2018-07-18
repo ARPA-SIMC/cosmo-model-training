@@ -1,6 +1,6 @@
-## Other useful pre- and post-processing operations ##
+## Other useful pre- and post-processing operations
 
-### Cutting out a subregion of a grid ###
+### Cutting out a subregion of a grid
 
 It is often useful to cut out a subregion of a set of gridded fields
 in a grib file, for example for reducing the size of a big external
@@ -27,7 +27,7 @@ nj=`grib_get -p Nj cosmo_maldives_0.0625.g1|head -1`
 mv cosmo_maldives_0.0625.g1 cosmo_maldives_0.0625_${ni}x${nj}.g1
 ```
 
-### Converting generic observations into BUFR ###
+### Converting generic observations into BUFR
 
 If it is desired to assimilate generic meteorological observations
 into COSMO model, they have to be converted first into BUFR format
@@ -125,7 +125,7 @@ where `$BUFR_TEMPLATE` is a suitable template for the observation
 type, see `dbamsg convert --template=list` for a complete list of
 available templates.
 
-### Converting generic observations into GRIB ###
+### Converting generic observations into GRIB
 
 For latent heat nudging in Cosmo, the observations (typically radar
 rain rate estimation) have to be provided in the form of gridded
@@ -170,7 +170,7 @@ The output file `obs.grib` will have to be renamed to the form
 `yymmddhh.grib1`, according to Cosmo convention, before feeding it to
 the Cosmo model.
 
-### Converting BUFR observations into netcdf for data assimilation ###
+### Converting BUFR observations into netcdf for data assimilation
 
 Cosmo model requires observations for data assimilation (excluded
 latent heat nudging) to be formatted in a particular netcdf

@@ -1,4 +1,4 @@
-## Main ingredients for running the COSMO model ##
+## Main ingredients for running the COSMO model
 
 Once all the software is ready, we need at least the input gridded
 data for running the model system:

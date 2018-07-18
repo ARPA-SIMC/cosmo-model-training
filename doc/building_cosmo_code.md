@@ -1,6 +1,6 @@
-## Building COSMO code ##
+## Building COSMO code
 
-### Int2lm ###
+### Int2lm
 
 Unpack the int2lm package `int2lm_180226_2.05.tar.bz2`, and enter the
 corresponding directory `int2lm_180226_2.05`. Now we must edit the
@@ -58,7 +58,7 @@ Other switches are for debugging/optimization so they are not strictly
 necessary for a successful compilation and run, but they are required
 for running efficiently the code in oeprational mode.
 
-### Cosmo ###
+### Cosmo
 
 Similarly to int2lm we unpack `cosmo_180223_5.05.tar.bz2`, enter the
 directory end edit `Fopts`:

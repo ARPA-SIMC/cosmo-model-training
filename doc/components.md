@@ -1,19 +1,19 @@
-## Components of the COSMO software and external prerequisites ##
+## Components of the COSMO software and external prerequisites
 
-### COSMO code ###
+### COSMO code
 
- * Int2lm interpolation program that interpolates data from a global
+ * Int2lm - interpolation program that interpolates data from a global
    model or from COSMO model itself to the desired integration domain
- * Cosmo model *the meteorological model*
+ * Cosmo model - the meteorological model
 
-### External libraries ###
+### External libraries
 
  * MPI - library for parallel computing
  * netcdf, netcdf-fortran - library for I/O of observations and other
    files
  * grib_api - library for I/O of mdel fields in grib format by ECMWF
 
-### Other prerequisites ###
+### Other prerequisites
 
 A Fortran compiler adhering to the full f95 standard and with at least
 some basic support of f2003 features. Relatively recent versions of
@@ -35,7 +35,7 @@ implementation is strongly suggested.
 The COSMO model can also take advantage of GPU accelerators with a
 specific version of the code, but this will not be covered here.
 
-### Operating system ###
+### Operating system
 
 The system installation commands throughout this tutorial assume that
 the work is done on a CentOS 7 GNU/Linux system.

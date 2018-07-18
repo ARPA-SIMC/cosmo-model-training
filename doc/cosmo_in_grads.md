@@ -1,6 +1,6 @@
-## Importing Cosmo data in grads ##
+## Importing Cosmo data in grads
 
-### Basic import of Cosmo grib data in grads ###
+### Basic import of Cosmo grib data in grads
 
 The procedure for importing a single grib file consists in creating
 the so-called *ctl* file, which contains the decription of the grib
@@ -23,12 +23,12 @@ For grib2 it is similar but we have to use a different tool (and have
 gribmap -i lfff00000000p.ctl
 ```
 
-### Postprocessing data for improving grads experience ###
+### Postprocessing data for improving grads experience
 
 Now we will use grib_api tools and libsim tools to process the grib
 files before importing them in grads.
 
-#### Isolating surface fields only ####
+#### Isolating surface fields only
 
 Since Cosmo files `lfff????????` usually contain both surface and
 upper air fields on native model levels, as well as soil fields on
@@ -54,7 +54,7 @@ done
 ```
 [download the script](../tools/make_surf.sh)
 
-#### Accumulating on the desired interval ####
+#### Accumulating on the desired interval
 
 The file obtained in the previous operation is a step forward if we
 are interesting only in visualizing surface fields, however we still

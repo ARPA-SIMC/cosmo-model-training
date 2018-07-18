@@ -1,4 +1,4 @@
-## Running Int2lm ##
+## Running Int2lm
 
 Before running the interpolation program int2lm we have to accurately
 prepare the namelist `INPUT` with all the information about our setup

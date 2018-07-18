@@ -1,9 +1,9 @@
-## COSMO data formats ##
+## COSMO data formats
 
 Int2lm and COSMO have support for different formats in input and
 output.
 
-### Gridded data ###
+### Gridded data
 
 Input and output gridded data can be read and written in WMO grib1,
 grib2 (grib_api library) and netcdf following CF convention (netcdf
@@ -26,7 +26,7 @@ to `apix`.
 For netcdf the indicated entries should be set to `netcdf` both for
 reading and writing.
 
-### Point data (observations) ###
+### Point data (observations)
 
 Observational data for data assimilation are read by COSMO in netcdf
 format with a specific convention; these data can be converted from
