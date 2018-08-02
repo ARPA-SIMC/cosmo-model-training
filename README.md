@@ -17,7 +17,7 @@ The operating-system-related operations contained in the tutorial
 (mainly installation of pre-compiled software packages) assume the
 user is working under a CentOS 7 GNU/Linux distribution. If such a
 system is not available, it is possible to use one of the `centos*`
-recipe files in the [singularity directory](singularity) to build a
+recipe files in the [singularity/ directory](singularity) to build a
 CentOS containerized environment with
 [singularity](http://singularity.lbl.gov/) on a generic Linux system.
 
@@ -29,4 +29,4 @@ for installation of prerequisites on a real Debian/Ubuntu system.
 ## Useful tools
 
 The [tools/ directory](tools/) of the project contains some useful
-scripts for preforming various tasks.
+scripts for performing various tasks.
