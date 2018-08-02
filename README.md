@@ -25,3 +25,8 @@ There is also a container for generating a Debian system suitable for
 performing the tutorial (not fully tested however); it can be used
 either for generating a Debian containerized environment or as a hint
 for installation of prerequisites on a real Debian/Ubuntu system.
+
+## Useful tools
+
+The [tools/ directory](tools/) of the project contains some useful
+scripts for preforming various tasks.
