@@ -1,14 +1,30 @@
 ## Retrieving ECMWF reanalysis
 
-Recent ECEMF reanalysis projects, namely ERA-Interim and ERA5, offer a
+Recent ECMWF reanalysis projects, namely ERA-Interim and ERA5, offer a
 publicly accessible archive of atmospheric reanalysis data with a
 relatively high spatial resolution and availability of fields,
 suitable to be used as initial and boundary condition for experiments
 with Cosmo model.
 
-In order to get access to the data, the user must register and install
-the ecmwf-api-client package as indicated in the [corresponding ECMWF
+In order to get access to the data, the user must register freely on
+ECMWF web site as indicated in the [corresponding ECMWF
 page](https://confluence.ecmwf.int//display/CKB/How+to+download+data+via+the+ECMWF+WebAPI).
+
+The software package ecmwf-api-client can be installed easily on a
+CentOS system from the Arpae-SIMC repository with the following
+procedure:
+
+```
+# install the copr plugin for reaching additional rpm repositories
+sudo yum install yum-plugin-copr
+# enable ARPA-SIMC repository
+sudo yum copr enable simc/stable epel-7
+# install software
+sudo yum install ecmwf-api-client
+```
+
+The use of Arpae-SIMC software repository will be described in more
+details [in a subsequent page](installing_postprocessing_software.md)
 
 ### Use of the provided script for retriving data for Cosmo
 

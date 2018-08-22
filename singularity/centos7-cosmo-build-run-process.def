@@ -36,10 +36,10 @@ Include: yum
     wget -O /usr/local/bin/g2ctl ftp://ftp.cpc.ncep.noaa.gov/wd51we/g2ctl/g2ctl
     chmod +x /usr/local/bin/grib2ctl.pl /usr/local/bin/g2ctl
 
-# install Arpae-SIMC software (without devel)
+# install software from Arpae-SIMC repository (without devel)
 # install the copr plugin for reaching additional rpm repositories
     yum install -q -y yum-plugin-copr
 # enable Arpae-SIMC repository
     yum -q -y copr enable simc/stable epel-7
 # install software
-    yum -q -y install wreport bufr2netcdf dballe arkimet libsim
+    yum -q -y install wreport bufr2netcdf dballe arkimet libsim ecmwf-api-client
